@@ -1,9 +1,9 @@
 import express from 'express';
 import 'dotenv/config';
 import cors from 'cors';
-import routes from './routes/router';
+import routes from './Routes/router';
 import "reflect-metadata";
-import database from './config/data-source'
+import database from './Config/data-source'
 
 database.initialize()
     .then(() => console.log("Database connected"))
