@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import loginRouter from './login.router';
-import userRouter from './user.router';
 import vinoRouter from './vino.router';
+import userRouter from './user.router';
 
 const routes = Router();
 

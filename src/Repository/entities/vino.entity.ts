@@ -1,39 +1,40 @@
-import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm"
-import { User } from "./user.entity"
-import { userInfo } from "os"
+import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, TableForeignKey } from "typeorm"
+import { Usuario } from "./user.entity"
 
 @Entity()
 export class Vino {
     @PrimaryGeneratedColumn()
-    id!: number
+    id: number
 
     @PrimaryColumn()
-    user_id!: number
+    userId: number
 
     @Column()
-    año!: number
+    año: number
 
     @Column()
-    variedad!: string
+    variedad: string
 
     @Column()
-    tipo!: string
+    tipo: string
 
     @Column()
-    color!: string
+    color: string
 
     @Column()
-    temperatura!: number
+    temperatura: number
 
     @Column()
-    graduacion!: number
+    graduacion: number
 
     @Column()
-    ph!: number
+    ph: number
 
     @Column()
-    observaciones!: string
+    observaciones: string
 
-    @ManyToOne(() => User, (user) => user.vinos)
-    user!: User
+    @ManyToOne(() => Usuario, (usuario) => usuario.vinos, {
+        onDelete: "CASCADE"
+    })
+    user: Usuario
 }

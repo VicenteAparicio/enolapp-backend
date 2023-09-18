@@ -1,20 +1,21 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 import { Vino } from "./vino.entity"
 
 @Entity()
-export class User {
+export class Usuario {
     @PrimaryGeneratedColumn()
-    id!: number
+    id: number
 
     @Column()
-    nickname!: string
+    nickname: string
 
     @Column()
-    email!: string
+    email: string
 
     @Column()
-    password!: string
+    password: string
 
-    @OneToMany(() => Vino, (vino) => vino.user_id)
-    vinos!: Vino[]
+    @OneToMany(() => Vino, (vino) => vino.userId, { cascade: true, onDelete: 'CASCADE' })
+    @JoinColumn()
+    vinos: Vino[]
 }

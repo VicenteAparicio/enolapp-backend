@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { User } from "../Repository/entities/user.entity";
-import { UserService } from "../Service/services/user.svc";
+import { Usuario } from "../Repository/entities/user.entity";
 import { IResponse } from "../Service/interfaces/IResponse";
+import { UserService } from "../Service/services/user.svc";
 
 const userService = new UserService();
 
@@ -10,7 +10,7 @@ export class UserController {
         req: Request,
         res: Response
     ): Promise<void> {
-        const response: IResponse<User[]> = await userService.list();
+        const response: IResponse<Usuario[]> = await userService.list();
         if (response.data) {
             res.status(200).send(response);
         } else {
@@ -22,7 +22,7 @@ export class UserController {
         req: Request,
         res: Response
     ): Promise<void> {
-        const response: IResponse<User> = await userService.get(parseInt(req.params.user_id))
+        const response: IResponse<Usuario> = await userService.get(parseInt(req.params.user_id))
         if (response.data) {
             res.status(200).send(response);
         } else {

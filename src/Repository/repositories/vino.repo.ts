@@ -9,7 +9,7 @@ export class VinoRepository {
 
     async list(id?: number): Promise<Vino[] | null> {
         try {
-            return repo.findBy({ user_id: id })
+            return repo.findBy({ userId: id })
         } catch {
             console.error('Error: Data was not fetch from database')
         }
@@ -25,14 +25,15 @@ export class VinoRepository {
         return null;
     }
 
-    async create(data: Partial<Vino>): Promise<Vino> {
+    async create(data: Partial<Vino>): Promise<Vino | null> {
         try {
             const Vino = repo.create(data);
 
             return await repo.save(Vino);
         } catch {
-            throw new Error("Error: Wyne was not been created.")
+            console.error("Error: Wyne was not been created.")
         }
+        return null;
     }
 
     async update(id: number, data: Partial<Vino>): Promise<Vino | null> {
@@ -52,17 +53,18 @@ export class VinoRepository {
 
                 return await repo.save(vinoToUpdate);
             }
-            return null;
         } catch {
-            throw new Error("Error: Wyne has not been updated.");
+            console.error("Error: Wyne has not been updated.");
         }
+        return null;
     }
 
     async remove(data: Vino): Promise<Vino | null> {
         try {
             return await repo.remove(data);
         } catch {
-            throw new Error("Error: Wyne was not been removed from database.")
+            console.error("Error: Wyne was not been removed from database.")
         }
+        return null;
     }
 }

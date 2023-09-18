@@ -1,9 +1,8 @@
 
-import { User } from "../../Repository/entities/user.entity";
 import bcrypt from 'bcrypt';
-import { UserRepository } from "../../Repository/repositories/user.repo";
 import jwt, { Secret } from "jsonwebtoken";
 import { IResponse } from "../interfaces/IResponse";
+import { UserRepository } from "../../Repository/repositories/user.repo";
 
 const userRepository = new UserRepository()
 

@@ -3,6 +3,7 @@ import { VinoRepository } from "../../Repository/repositories/vino.repo";
 
 import { IResponse } from "../interfaces/IResponse";
 
+const NO_REMOVE = "Data can't be deleted."
 const NO_DATA = "Data not found."
 const NO_CREATE = "Wyne data was not saved."
 
@@ -84,11 +85,13 @@ export class VinoService {
 
             const result = await vinoRepository.remove(vinoExist)
 
-            if (!result) {
-                response.error = NO_CREATE;
+            if (!result || result == null) {
+                response.error = NO_REMOVE;
             } else {
                 response.data = true;
             }
+        } else {
+            response.error = NO_DATA;
         }
         return response;
     }

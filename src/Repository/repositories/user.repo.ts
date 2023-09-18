@@ -1,12 +1,12 @@
 
 import database from '../../Config/data-source';
 
-import { User } from "../entities/user.entity";
+import { Usuario } from "../entities/user.entity";
 
-const repo = database.getRepository(User);
+const repo = database.getRepository(Usuario);
 
 export class UserRepository {
-    async create(data: Partial<User>): Promise<User | null> {
+    async create(data: Partial<Usuario>): Promise<Usuario | null> {
         try {
             const user = repo.create(data);
 
@@ -17,7 +17,7 @@ export class UserRepository {
         return null;
     }
 
-    async list(id?: number): Promise<User[] | null> {
+    async list(id?: number): Promise<Usuario[] | null> {
         try {
             return await repo.find();
         } catch {
@@ -26,7 +26,7 @@ export class UserRepository {
         return null;
     }
 
-    async getUserById(id: number): Promise<User | null> {
+    async getUserById(id: number): Promise<Usuario | null> {
         try {
             const result = repo.findOneBy(
                 { id: id, })
@@ -37,7 +37,7 @@ export class UserRepository {
         return null
     }
 
-    async getUserByEmail(email: string): Promise<User | null> {
+    async getUserByEmail(email: string): Promise<Usuario | null> {
         try {
             const result = repo.findOneBy(
                 { email: email, })
@@ -52,7 +52,7 @@ export class UserRepository {
     //     console.error("Method not implemented.");
     //     return null
     // }
-    async remove(user: User): Promise<User | null> {
+    async remove(user: Usuario): Promise<Usuario | null> {
         try {
             return await repo.remove(user);
         } catch {
