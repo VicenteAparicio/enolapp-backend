@@ -2,6 +2,7 @@ import { Vino } from "../../Repository/entities/vino.entity";
 import { VinoRepository } from "../../Repository/repositories/vino.repo";
 
 import { IResponse } from "../interfaces/IResponse";
+import { IVinoService } from "../interfaces/IVinoService";
 
 const NO_REMOVE = "Data can't be deleted."
 const NO_DATA = "Data not found."
@@ -9,7 +10,7 @@ const NO_CREATE = "Wyne data was not saved."
 
 const vinoRepository = new VinoRepository()
 
-export class VinoService {
+export class VinoService implements IVinoService {
 
     async list(id?: number): Promise<IResponse<Vino[]>> {
         let response: IResponse<Vino[]> = {
@@ -26,6 +27,7 @@ export class VinoService {
 
         return response;
     }
+
     async get(id: number): Promise<IResponse<Vino>> {
         let response: IResponse<Vino> = {
             error: undefined,
@@ -50,7 +52,7 @@ export class VinoService {
         const result = await vinoRepository.create(data)
 
         if (!result) {
-            response.error = NO_CREATE;
+            response.error = NO_CREATE + result;
         } else {
             response.data = result!;
         }
@@ -58,7 +60,7 @@ export class VinoService {
         return response;
     }
 
-    async update(id: number, data: Vino): Promise<IResponse<Vino>> {
+    async update(id: number, data: Partial<Vino>): Promise<IResponse<Vino>> {
         let response: IResponse<Vino> = {
             error: undefined,
             data: undefined

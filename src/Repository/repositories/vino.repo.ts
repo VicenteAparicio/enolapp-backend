@@ -2,10 +2,11 @@
 import database from '../../Config/data-source';
 
 import { Vino } from "../entities/vino.entity";
+import { IVinoRepository } from '../interfaces/IVinoRepository';
 
 const repo = database.getRepository(Vino);
 
-export class VinoRepository {
+export class VinoRepository implements IVinoRepository {
 
     async list(id?: number): Promise<Vino[] | null> {
         try {
@@ -31,7 +32,7 @@ export class VinoRepository {
 
             return await repo.save(Vino);
         } catch {
-            console.error("Error: Wyne was not been created.")
+            console.error("Error: Wyne was not been created." + { Vino })
         }
         return null;
     }
