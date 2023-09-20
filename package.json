@@ -1,7 +1,10 @@
 {
   "name": "enolapp-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Technical test",
+  "engines": {
+    "node": "16.20.2"
+  },
   "main": "dist/index.js",
   "scripts": {
     "start": "node ./src/app.ts",
