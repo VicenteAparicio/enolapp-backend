@@ -7,11 +7,11 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
             throw new Error('There is no token.');
         }
 
-        const secret_key: Secret = process.env.JWT_SECRET!;
+        const secretKey: Secret = process.env.JWT_SECRET!;
 
         const token = req.headers.authorization.split('')[1];
 
-        const auth = jwt.verify(token, secret_key);
+        const auth = jwt.verify(token, secretKey);
 
         if (auth) {
             return next();
