@@ -1,6 +1,6 @@
 import { Usuario } from "../../Repository/entities/user.entity";
 import bcrypt from "bcrypt";
-import { IResponse } from "../interfaces/IResponse";
+import { IResponse } from "../models/IResponse";
 import { UserRepository } from "../../Repository/repositories/user.repo";
 import { IUserService } from "../interfaces/IUserService";
 

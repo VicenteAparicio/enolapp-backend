@@ -1,8 +1,8 @@
 import { Vino } from "../entities/vino.entity"
 
-export interface IVinoRepository {
+export interface IDataRepository {
     list: (
-        id?: number
+        id: number
     ) => Promise<Vino[] | null>
     get: (
         id: number

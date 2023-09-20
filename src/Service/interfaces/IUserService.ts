@@ -1,5 +1,5 @@
 import { Usuario } from "../../Repository/entities/user.entity"
-import { IResponse } from "./IResponse"
+import { IResponse } from "../models/IResponse"
 
 export interface IUserService {
     list: (

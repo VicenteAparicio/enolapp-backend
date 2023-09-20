@@ -1,9 +1,9 @@
 import { Vino } from "../../Repository/entities/vino.entity"
-import { IResponse } from "./IResponse"
+import { IResponse } from "../models/IResponse"
 
-export interface IVinoService {
+export interface IDataService {
     list: (
-        id?: number
+        id: number
     ) => Promise<IResponse<Vino[]>>
     get: (
         id: number

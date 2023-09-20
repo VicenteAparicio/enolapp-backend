@@ -1,8 +1,9 @@
 
 import bcrypt from 'bcrypt';
 import jwt, { Secret } from "jsonwebtoken";
-import { IResponse } from "../interfaces/IResponse";
+import { IResponse } from "../models/IResponse";
 import { UserRepository } from "../../Repository/repositories/user.repo";
+import { ILoggerResponse } from '../models/ILoggerResponse';
 
 const userRepository = new UserRepository()
 
@@ -10,8 +11,8 @@ const USER_ERROR = "Wrong user";
 const PWD_ERROR = "Password doesn't match.";
 
 export class LoginService {
-    async validate(email: string, pwd: string): Promise<IResponse<string>> {
-        let response: IResponse<string> = {
+    async validate(email: string, pwd: string): Promise<IResponse<ILoggerResponse>> {
+        let response: IResponse<ILoggerResponse> = {
             error: undefined,
             data: undefined
         }
@@ -36,7 +37,14 @@ export class LoginService {
 
         const secret_key: Secret = process.env.JWT_SECRET!;
 
-        response.data = jwt.sign(payload, secret_key)
+        const loggerInfo: ILoggerResponse = {
+            id: userExist.id,
+            nickname: userExist.nickname,
+            token: jwt.sign(payload, secret_key)
+        }
+
+        response.data = loggerInfo;
+
         return response;
     }
 

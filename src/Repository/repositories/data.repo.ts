@@ -2,17 +2,19 @@
 import database from '../../Config/data-source';
 
 import { Vino } from "../entities/vino.entity";
-import { IVinoRepository } from '../interfaces/IVinoRepository';
+import { IDataRepository } from '../interfaces/IDataRepository';
 
 const repo = database.getRepository(Vino);
 
-export class VinoRepository implements IVinoRepository {
+export class DataRepository implements IDataRepository {
 
-    async list(id?: number): Promise<Vino[] | null> {
-        try {
-            return repo.findBy({ userId: id })
-        } catch {
-            console.error('Error: Data was not fetch from database')
+    async list(id: number): Promise<Vino[] | null> {
+        if (id != null && id != undefined && !Number.isNaN(id)) {
+            try {
+                return repo.findBy({ userId: id })
+            } catch {
+                console.error('Error: Data has not been retrieve from the database')
+            }
         }
         return null;
     }
@@ -21,7 +23,7 @@ export class VinoRepository implements IVinoRepository {
         try {
             return repo.findOneBy({ id: id })
         } catch {
-            console.error('Error: Data was not fetch from database')
+            console.error('Error: Data hast not been retrieve from the database')
         }
         return null;
     }
@@ -32,7 +34,7 @@ export class VinoRepository implements IVinoRepository {
 
             return await repo.save(Vino);
         } catch {
-            console.error("Error: Wyne was not been created." + { Vino })
+            console.error("Error: Data has not been created.")
         }
         return null;
     }

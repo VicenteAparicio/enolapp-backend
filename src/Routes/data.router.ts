@@ -1,26 +1,26 @@
 import { Router, Request, Response } from "express";
-import { VinoController } from "../Controllers/vinoController";
 import { auth } from "../Middleware/auth";
+import { DataController } from "../Controllers/dataController";
 
-const vinoController = new VinoController();
+const dataController = new DataController();
 
 const vinoRouter = Router();
 
-// vinoRouter.get('/', vinoController.list);
+// vinoRouter.get('/', dataController.list);
 vinoRouter.get('/fromUser/:user_id',
     // auth, 
-    vinoController.list);
+    dataController.list);
 vinoRouter.get('/:vino_id',
     //  auth,
-    vinoController.get);
+    dataController.get);
 vinoRouter.post('/',
     // auth,
-    vinoController.create);
+    dataController.create);
 vinoRouter.put('/:vino_id',
     // auth,
-    vinoController.update);
+    dataController.update);
 vinoRouter.delete('/:vino_id',
     //  auth,
-    vinoController.delete);
+    dataController.delete);
 
 export default vinoRouter;
