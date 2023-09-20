@@ -9,7 +9,7 @@ const repo = database.getRepository(Vino);
 export class DataRepository implements IDataRepository {
 
     async list(id: number): Promise<Vino[] | null> {
-        if (id != null && id != undefined && !Number.isNaN(id)) {
+        if (id !== null && id !== undefined && !Number.isNaN(id)) {
             try {
                 return repo.findBy({ userId: id })
             } catch {

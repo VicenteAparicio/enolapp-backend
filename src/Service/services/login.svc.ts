@@ -32,7 +32,7 @@ export class LoginService {
 
         const payload = {
             userId: userExist.id,
-            createdAt: new Date,
+            createdAt: new Date(),
         }
 
         const secretKey: Secret = process.env.JWT_SECRET!;
