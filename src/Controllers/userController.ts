@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Usuario } from "../Repository/entities/user.entity";
-import { IResponse } from "../Service/interfaces/IResponse";
+import { IResponse } from "../Service/models/IResponse";
 import { UserService } from "../Service/services/user.svc";
 
 const userService = new UserService();

@@ -2,10 +2,11 @@
 import database from '../../Config/data-source';
 
 import { Usuario } from "../entities/user.entity";
+import { IUserRepository } from '../interfaces/IUserRepository';
 
 const repo = database.getRepository(Usuario);
 
-export class UserRepository {
+export class UserRepository implements IUserRepository {
     async create(data: Partial<Usuario>): Promise<Usuario | null> {
         try {
             const user = repo.create(data);

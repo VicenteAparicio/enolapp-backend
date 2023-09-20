@@ -1,22 +1,23 @@
 import { Vino } from "../../Repository/entities/vino.entity";
-import { VinoRepository } from "../../Repository/repositories/vino.repo";
 
-import { IResponse } from "../interfaces/IResponse";
+import { IResponse } from "../models/IResponse";
+import { IDataService } from "../interfaces/IDataService";
+import { DataRepository } from "../../Repository/repositories/data.repo";
 
 const NO_REMOVE = "Data can't be deleted."
 const NO_DATA = "Data not found."
 const NO_CREATE = "Wyne data was not saved."
 
-const vinoRepository = new VinoRepository()
+const dataRepository = new DataRepository()
 
-export class VinoService {
+export class DataService implements IDataService {
 
-    async list(id?: number): Promise<IResponse<Vino[]>> {
+    async list(id: number): Promise<IResponse<Vino[]>> {
         let response: IResponse<Vino[]> = {
             error: undefined,
             data: undefined
         }
-        const result = await vinoRepository.list(id)
+        const result = await dataRepository.list(id)
 
         if (result!?.length == 0) {
             response.error = NO_DATA;
@@ -26,12 +27,13 @@ export class VinoService {
 
         return response;
     }
+
     async get(id: number): Promise<IResponse<Vino>> {
         let response: IResponse<Vino> = {
             error: undefined,
             data: undefined
         }
-        const result = await vinoRepository.get(id)
+        const result = await dataRepository.get(id)
 
         if (!result) {
             response.error = NO_DATA;
@@ -47,7 +49,7 @@ export class VinoService {
             error: undefined,
             data: undefined
         }
-        const result = await vinoRepository.create(data)
+        const result = await dataRepository.create(data)
 
         if (!result) {
             response.error = NO_CREATE;
@@ -58,12 +60,12 @@ export class VinoService {
         return response;
     }
 
-    async update(id: number, data: Vino): Promise<IResponse<Vino>> {
+    async update(id: number, data: Partial<Vino>): Promise<IResponse<Vino>> {
         let response: IResponse<Vino> = {
             error: undefined,
             data: undefined
         }
-        const result = await vinoRepository.update(id, data);
+        const result = await dataRepository.update(id, data);
         if (!result) {
             response.error = NO_CREATE;
         } else {
@@ -79,11 +81,11 @@ export class VinoService {
             data: undefined
         }
 
-        const vinoExist = await vinoRepository.get(id);
+        const vinoExist = await dataRepository.get(id);
 
         if (vinoExist?.variedad) {
 
-            const result = await vinoRepository.remove(vinoExist)
+            const result = await dataRepository.remove(vinoExist)
 
             if (!result || result == null) {
                 response.error = NO_REMOVE;
