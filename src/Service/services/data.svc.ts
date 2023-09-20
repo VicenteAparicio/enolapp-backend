@@ -19,7 +19,7 @@ export class DataService implements IDataService {
         }
         const result = await dataRepository.list(id)
 
-        if (result!?.length == 0) {
+        if (result!?.length === 0) {
             response.error = NO_DATA;
         } else {
             response.data = result!;

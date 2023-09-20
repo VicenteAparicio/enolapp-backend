@@ -35,12 +35,12 @@ export class LoginService {
             createdAt: new Date,
         }
 
-        const secret_key: Secret = process.env.JWT_SECRET!;
+        const secretKey: Secret = process.env.JWT_SECRET!;
 
         const loggerInfo: ILoggerResponse = {
             id: userExist.id,
             nickname: userExist.nickname,
-            token: jwt.sign(payload, secret_key)
+            token: jwt.sign(payload, secretKey)
         }
 
         response.data = loggerInfo;

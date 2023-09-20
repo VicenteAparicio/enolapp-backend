@@ -18,7 +18,7 @@ export class UserRepository implements IUserRepository {
         return null;
     }
 
-    async list(id?: number): Promise<Usuario[] | null> {
+    async list(): Promise<Usuario[] | null> {
         try {
             return await repo.find();
         } catch {
@@ -49,10 +49,6 @@ export class UserRepository implements IUserRepository {
         return null;
     }
 
-    // update(id: number, data: User): Promise<User> {
-    //     console.error("Method not implemented.");
-    //     return null
-    // }
     async remove(user: Usuario): Promise<Usuario | null> {
         try {
             return await repo.remove(user);

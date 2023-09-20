@@ -7,7 +7,6 @@ const userService = new UserService();
 
 export class UserController {
     async list(
-        req: Request,
         res: Response
     ): Promise<void> {
         const response: IResponse<Usuario[]> = await userService.list();
@@ -41,13 +40,6 @@ export class UserController {
             res.status(400).send(response);
         }
     }
-
-    // async update(
-    //     req: Request,
-    //     res: Response
-    // ): Promise<void> {
-    //     res.status(200).send({ data: 'User UPDATE' })
-    // }
 
     async delete(
         req: Request,

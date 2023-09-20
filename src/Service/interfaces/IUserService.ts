@@ -3,7 +3,6 @@ import { IResponse } from "../models/IResponse"
 
 export interface IUserService {
     list: (
-        id?: number
     ) => Promise<IResponse<Usuario[]>>
     get: (
         id: number
