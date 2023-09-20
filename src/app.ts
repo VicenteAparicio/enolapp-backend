@@ -16,4 +16,4 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(routes);
 
-app.listen(PORT, () => console.error(`App runing on port : ${PORT}`));
+app.listen(PORT);
