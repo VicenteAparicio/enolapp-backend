@@ -6,8 +6,8 @@ import "reflect-metadata";
 import database from './Config/data-source'
 
 database.initialize()
-    .then(() => console.log("Database connected"))
-    .catch((error) => console.error(error))
+// .then(() => console.log("Database connected"))
+// .catch((error) => console.error(error))
 
 const PORT = process.env.PORT || 3002;
 const app = express();
