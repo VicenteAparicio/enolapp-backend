@@ -13,7 +13,7 @@ const dataRepository = new DataRepository()
 export class DataService implements IDataService {
 
     async list(id: number): Promise<IResponse<Vino[]>> {
-        let response: IResponse<Vino[]> = {
+        const response: IResponse<Vino[]> = {
             error: undefined,
             data: undefined
         }
@@ -29,7 +29,7 @@ export class DataService implements IDataService {
     }
 
     async get(id: number): Promise<IResponse<Vino>> {
-        let response: IResponse<Vino> = {
+        const response: IResponse<Vino> = {
             error: undefined,
             data: undefined
         }
@@ -45,7 +45,7 @@ export class DataService implements IDataService {
     }
 
     async create(data: Partial<Vino>): Promise<IResponse<Vino>> {
-        let response: IResponse<Vino> = {
+        const response: IResponse<Vino> = {
             error: undefined,
             data: undefined
         }
@@ -61,7 +61,7 @@ export class DataService implements IDataService {
     }
 
     async update(id: number, data: Partial<Vino>): Promise<IResponse<Vino>> {
-        let response: IResponse<Vino> = {
+        const response: IResponse<Vino> = {
             error: undefined,
             data: undefined
         }
@@ -76,7 +76,7 @@ export class DataService implements IDataService {
     }
 
     async remove(id: number): Promise<IResponse<boolean>> {
-        let response: IResponse<boolean> = {
+        const response: IResponse<boolean> = {
             error: undefined,
             data: undefined
         }

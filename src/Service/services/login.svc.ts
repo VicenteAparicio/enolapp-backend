@@ -12,7 +12,7 @@ const PWD_ERROR = "Password doesn't match.";
 
 export class LoginService {
     async validate(email: string, pwd: string): Promise<IResponse<ILoggerResponse>> {
-        let response: IResponse<ILoggerResponse> = {
+        const response: IResponse<ILoggerResponse> = {
             error: undefined,
             data: undefined
         }
