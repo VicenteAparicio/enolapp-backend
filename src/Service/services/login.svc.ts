@@ -12,7 +12,7 @@ const PWD_ERROR = "Password doesn't match.";
 
 export class LoginService {
     async validate(email: string, pwd: string): Promise<IResponse<ILoggerResponse>> {
-        let response: IResponse<ILoggerResponse> = {
+        const response: IResponse<ILoggerResponse> = {
             error: undefined,
             data: undefined
         }
@@ -32,15 +32,15 @@ export class LoginService {
 
         const payload = {
             userId: userExist.id,
-            createdAt: new Date,
+            createdAt: new Date(),
         }
 
-        const secret_key: Secret = process.env.JWT_SECRET!;
+        const secretKey: Secret = process.env.JWT_SECRET!;
 
         const loggerInfo: ILoggerResponse = {
             id: userExist.id,
             nickname: userExist.nickname,
-            token: jwt.sign(payload, secret_key)
+            token: jwt.sign(payload, secretKey)
         }
 
         response.data = loggerInfo;

@@ -11,7 +11,7 @@ export class DataController {
         req: Request,
         res: Response
     ): Promise<void> {
-        const response: IResponse<Vino[]> = await dataService.list(parseInt(req.params.user_id));
+        const response: IResponse<Vino[]> = await dataService.list(parseInt(req.params.user_id, 10));
         if (response.data) {
             res.status(200).send(response);
         } else {
@@ -23,7 +23,7 @@ export class DataController {
         req: Request,
         res: Response
     ): Promise<void> {
-        const response: IResponse<Vino> = await dataService.get(parseInt(req.params.vino_id));
+        const response: IResponse<Vino> = await dataService.get(parseInt(req.params.vino_id, 10));
         if (response.data) {
             res.status(200).send(response);
         } else {
@@ -47,7 +47,7 @@ export class DataController {
         req: Request,
         res: Response
     ): Promise<void> {
-        const response: IResponse<Vino> = await dataService.update(parseInt(req.params.vino_id), req.body)
+        const response: IResponse<Vino> = await dataService.update(parseInt(req.params.vino_id, 10), req.body)
         if (response.data) {
             res.status(200).send(response);
         } else {
@@ -59,7 +59,7 @@ export class DataController {
         req: Request,
         res: Response
     ): Promise<void> {
-        const response: IResponse<boolean> = await dataService.remove(parseInt(req.params.vino_id))
+        const response: IResponse<boolean> = await dataService.remove(parseInt(req.params.vino_id, 10))
         if (response.data) {
             res.status(200).send(response);
         } else {

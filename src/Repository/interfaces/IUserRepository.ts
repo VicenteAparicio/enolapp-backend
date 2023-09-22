@@ -5,7 +5,6 @@ export interface IUserRepository {
         data: Partial<Usuario>
     ) => Promise<Usuario | null>
     list: (
-        id?: number
     ) => Promise<Usuario[] | null>
     getUserById: (
         id: number

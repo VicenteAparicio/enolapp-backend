@@ -9,7 +9,7 @@ const repo = database.getRepository(Vino);
 export class DataRepository implements IDataRepository {
 
     async list(id: number): Promise<Vino[] | null> {
-        if (id != null && id != undefined && !Number.isNaN(id)) {
+        if (id !== null && id !== undefined && !Number.isNaN(id)) {
             try {
                 return repo.findBy({ userId: id })
             } catch {
@@ -21,7 +21,7 @@ export class DataRepository implements IDataRepository {
 
     async get(id: number): Promise<Vino | null> {
         try {
-            return repo.findOneBy({ id: id })
+            return repo.findOneBy({ id })
         } catch {
             console.error('Error: Data hast not been retrieve from the database')
         }
@@ -41,7 +41,7 @@ export class DataRepository implements IDataRepository {
 
     async update(id: number, data: Partial<Vino>): Promise<Vino | null> {
         try {
-            let vinoToUpdate = await repo.findOneBy({ id: id });
+            const vinoToUpdate = await repo.findOneBy({ id });
 
             if (vinoToUpdate?.variedad) {
 

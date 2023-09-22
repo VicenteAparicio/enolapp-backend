@@ -9,7 +9,7 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
 
         const secretKey: Secret = process.env.JWT_SECRET!;
 
-        const token = req.headers.authorization.split('')[1];
+        const token = req.headers.authorization.split(' ')[1];
 
         const auth = jwt.verify(token, secretKey);
 

@@ -18,7 +18,7 @@ export class UserRepository implements IUserRepository {
         return null;
     }
 
-    async list(id?: number): Promise<Usuario[] | null> {
+    async list(): Promise<Usuario[] | null> {
         try {
             return await repo.find();
         } catch {
@@ -30,7 +30,7 @@ export class UserRepository implements IUserRepository {
     async getUserById(id: number): Promise<Usuario | null> {
         try {
             const result = repo.findOneBy(
-                { id: id, })
+                { id, })
             return result;
         } catch {
             console.error('Error: Data was not fetch from database')
@@ -41,7 +41,7 @@ export class UserRepository implements IUserRepository {
     async getUserByEmail(email: string): Promise<Usuario | null> {
         try {
             const result = repo.findOneBy(
-                { email: email, })
+                { email, })
             return result;
         } catch {
             console.error('Error: Data was not fetch from database')
@@ -49,10 +49,6 @@ export class UserRepository implements IUserRepository {
         return null;
     }
 
-    // update(id: number, data: User): Promise<User> {
-    //     console.error("Method not implemented.");
-    //     return null
-    // }
     async remove(user: Usuario): Promise<Usuario | null> {
         try {
             return await repo.remove(user);

@@ -12,8 +12,8 @@ const USER_NOT_CREATED = "User can't be created."
 const userRepository = new UserRepository()
 
 export class UserService implements IUserService {
-    async list(id?: number): Promise<IResponse<Usuario[]>> {
-        let response: IResponse<Usuario[]> = {
+    async list(): Promise<IResponse<Usuario[]>> {
+        const response: IResponse<Usuario[]> = {
             error: undefined,
             data: undefined
         }
@@ -28,7 +28,7 @@ export class UserService implements IUserService {
     }
 
     async get(id: number): Promise<IResponse<Usuario>> {
-        let response: IResponse<Usuario> = {
+        const response: IResponse<Usuario> = {
             error: undefined,
             data: undefined
         }
@@ -42,7 +42,7 @@ export class UserService implements IUserService {
         return response;
     }
     async create(data: Partial<Usuario>): Promise<IResponse<boolean>> {
-        let response: IResponse<boolean> = {
+        const response: IResponse<boolean> = {
             error: undefined,
             data: undefined
         }
@@ -68,12 +68,8 @@ export class UserService implements IUserService {
         return response;
     }
 
-    // update(id: number, data: user): Promise<user> {
-    //     throw new Error("Method not implemented.");
-    // }
-
     async remove(id: number): Promise<IResponse<boolean>> {
-        let response: IResponse<boolean> = {
+        const response: IResponse<boolean> = {
             error: undefined,
             data: undefined
         }
