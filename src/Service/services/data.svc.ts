@@ -83,7 +83,7 @@ export class DataService implements IDataService {
 
         const vinoExist = await dataRepository.get(id);
 
-        if (vinoExist?.variedad) {
+        if (vinoExist?.userId) {
 
             const result = await dataRepository.remove(vinoExist)
 
