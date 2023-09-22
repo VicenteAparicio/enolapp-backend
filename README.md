@@ -1,4 +1,5 @@
-##ENOLAPP BACKEND
+<h1>ENOLAPP BACKEND</h1>
+<br>
 <br>
 Proyecto está realizado con Node.js en typescript
 <br>
@@ -6,7 +7,7 @@ Inicialiar el proyecto:
 <br>
 npm install
 <br>
-##TECNOLOGÍAS EMPLEADAS
+<h2>TECNOLOGÍAS EMPLEADAS</h2>
 <br>
 JWT
 <br>
@@ -23,7 +24,7 @@ MYSQL
 CORS
 <br>
 
-##TODO
+<h2>TODO</h2>
 <br>
 TESTS
 
